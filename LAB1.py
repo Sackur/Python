@@ -25,7 +25,7 @@ def analyze_text(text: str) -> Dict[str, int]:
     print("--- Result of Task 1 ---")
     print(f"List of words appearing > 3 times: {frequent_words_list}")
 
-    # 5. Returning the full word count dictionary (as requested by the task)
+    # 5. Returning the full word count dictionary
     return word_counts
 
 
@@ -152,7 +152,7 @@ def get_pending_tasks() -> List[str]:
     """
     Creates and returns a list of task names that have the status 'pending'.
     """
-    # Returns a list of task NAMES (as requested by 'make a task list')
+    # Returns a list of task NAMES
     return [name for name, status in tasks.items() if status == "pending"]
 
 
