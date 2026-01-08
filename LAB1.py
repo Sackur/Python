@@ -4,11 +4,7 @@ from typing import List, Dict, Any
 
 # TASK 1: Text Processing (Робота з текстом)
 def analyze_text(text: str) -> Dict[str, int]:
-    """
-    Function receives a string as input and returns a dictionary where keys are
-    unique words and values are their counts. It also creates and prints a list
-    of words that appear more than 3 times.
-    """
+
     # 1. Cleaning and tokenizing the text
     cleaned_text = ''.join(c.lower() if c.isalnum() or c.isspace() else ' ' for c in text)
     words = [word for word in cleaned_text.split() if word]
@@ -34,9 +30,6 @@ inventory: Dict[str, int] = {}  # Initialize empty inventory
 
 
 def manage_inventory(product_name: str, quantity: int):
-    """
-    Updates the quantity of a product in the inventory based on addition or removal.
-    """
     product_name = product_name.lower().strip()
 
     if product_name not in inventory:
@@ -62,9 +55,6 @@ def manage_inventory(product_name: str, quantity: int):
 
 
 def get_low_stock_products() -> List[str]:
-    """
-    Creates and returns a list of product names where the quantity is less than 5.
-    """
     return [name for name, count in inventory.items() if count < 5]
 
 
@@ -73,11 +63,6 @@ SalesList = List[Dict[str, Any]]
 
 
 def analyze_sales(sales: SalesList) -> Dict[str, float]:
-    """
-    Calculates total revenue for each product and returns a dictionary
-    of all product revenues. It also creates and prints a list of products
-    that generated revenue greater than 1000.
-    """
     product_revenue: Dict[str, float] = {}
 
     for sale in sales:
@@ -111,11 +96,6 @@ tasks: Dict[str, str] = {}  # Initialize empty task list
 
 
 def manage_tasks(task_name: str, action: str, new_status: str = None):
-    """
-    Functions for adding, deleting, and changing the status of tasks.
-    Actions: 'add', 'delete', 'change status'.
-    Statuses: 'done', 'in progress', 'pending'.
-    """
     task_name = task_name.strip()
     action = action.lower()
     valid_statuses = {"done", "in progress", "pending"}
@@ -161,14 +141,11 @@ users: Dict[str, tuple] = {}  # Initialize empty user list
 
 
 def hash_password(password: str) -> str:
-    """Hashes the password using hashlib.md5() as implied by the task."""
     return hashlib.md5(password.encode()).hexdigest()
 
 
 def register_user(login: str, password: str, full_name: str):
-    """
-    Creates a dictionary entry storing login, hashed password, and full name.
-    """
+
     if login in users:
         print(f"User with login '{login}' already exists.")
         return
@@ -179,9 +156,7 @@ def register_user(login: str, password: str, full_name: str):
 
 
 def check_password(login: str) -> bool:
-    """
-    Checks the user's password; the password is read from the console using input().
-    """
+
     if login not in users:
         print(f"User with login '{login}' not found.")
         return False
